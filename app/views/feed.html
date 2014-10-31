@@ -1,1 +1,14 @@
-<p>This is the feed view.</p>
+				<div>
+					<div class = "nav">
+						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
+						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
+					</div>
+					<div id="feedPage">
+						<button id = "btnSignOut" class="defaultBtn" ng-click = "logOut()">Signout</button>
+						<h4> Welcome {{$scope.userName}}!!!</h4>
+						<input type = "text" id="feedsText" ng-model = "feedsText" style="width:750px;" align = "center" placeholder = "Enter your feed here">
+						<button ng-disabled="!itemFeedValid()" class="defaultBtn" ng-click="postFeeds()">Post</button>
+						<br>
+					</div>						
+					<feed-list>  </feed-list> 
+				</div>

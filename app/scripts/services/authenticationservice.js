@@ -9,7 +9,7 @@
  */
 
   angular.module('mybookApp')
-  	.service('AuthenticationService',['Base64', '$rootScope','$cookieStore', function(Base64, $rootScope, $cookieStore) {
+  	.service('AuthenticationService',['Base64', '$rootScope','$cookieStore', '$location', function(Base64, $rootScope, $cookieStore, $location) {
   		var service = {};
 		service.SetCredentials = function(username, password){
 			var authdata = Base64.encode(username + ':' + password);
@@ -23,6 +23,10 @@
     	service.ClearCredentials = function(){
     		delete $rootScope.globals;
     		$cookieStore.remove('globals');
+    	};
+
+    	service.signOutUser = function(){
+    		$location.path('/');
     	};
 
     	return service;					
@@ -109,11 +113,3 @@
 	    };
     /* jshint ignore:end */
 });
-
-
-
-  		// service.getAllUsers = function() {
-		  //   return [
-		  //         { firstName: 'Jane', lastName: 'Doe', age: 29 }, { firstName: 'John', lastName: 'Doe', age: 32 }
-		  //         ];
-		  //   };

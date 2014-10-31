@@ -1,1 +1,10 @@
-<p>This is the profile view.</p>
+				<div>
+					<div class = "nav">
+						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
+						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
+					</div>
+					<div id="profilePage">
+						<h4> Welcome {{$scope.userName}}!!!</h4>
+						<p>Profile Page</p>
+					</div>
+				</div>

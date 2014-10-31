@@ -1,0 +1,13 @@
+				<div>
+					<div class = "nav">
+						<button class="post" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
+						<button class="post" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
+
+					</div>
+					<div id="feed">
+						<input type = "text" id="feedsText" ng-model = "feedsText" style="width:750px;" align = "center" placeholder = "Enter your feed here">
+						<button ng-disabled="!itemFeedValid()" class="post" ng-click="postFeeds()">Post</button>
+						<br>
+					</div>						
+					<feed-list>  </feed-list> 
+				</div>

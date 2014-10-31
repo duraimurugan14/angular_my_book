@@ -73,30 +73,21 @@ body {
     
 }
 
-#feedPage {
+#feed {
     width:auto;
     float:left;
     padding:10px;  
 }
 
-#profilePage{
-    width:auto;
-    float:left;
-    padding:10px; 
-}
 
 button {
     border: 1px solid black;
-    padding: 7px;
+    padding: 70px;
 }
 
-button.defaultBtn {
+button.post {
     width: 100px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 200px;
 }
 
-#btnSignOut{
-    float: right;
-    padding-right: 5px;
-}

@@ -8,10 +8,29 @@
  * Controller of the mybookApp
  */
 angular.module('mybookApp')
-  .controller('ProfileCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('ProfileCtrl', ['$scope', '$rootScope', '$location', 'AuthenticationService', 
+  		function ($scope, $rootScope, $location, AuthenticationService) {
+		  	$scope.userName = $rootScope.globals.currentUser.username;
+		  	
+
+		    $scope.awesomeThings = [
+		      'HTML5 Boilerplate',
+		      'AngularJS',
+		      'Karma'
+		    ];
+
+		$scope.defaultCurrentViewTo = function(view){
+				switch(view){
+				case "feedsView" : 
+					$location.path('/feed');
+					break;
+				case "profileView" : 
+					$location.path('/profile');
+					break;
+				case "loginView" :
+				default:
+					$location.path('/');
+					break;
+			}
+		};
+}]);

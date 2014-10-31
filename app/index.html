@@ -18,12 +18,15 @@
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <div class="header">
+      <h3>mybook</h3>
+    </div>
 
     <!-- Add your site or application content here -->
-      <div ng-view=""></div>
+      <div class = "templateView" ng-view=""></div>
 
       <div class="footer">
-        <p><span class=""></span> Talent Improving exercise, OFS </p>
+        <p> Talent Improving exercise, OFS </p>
       </div>
 
 
@@ -62,6 +65,7 @@
         <script src="scripts/controllers/feed.js"></script>
         <script src="scripts/controllers/profile.js"></script>
         <script src="scripts/services/authenticationservice.js"></script>
+        <script src="scripts/directives/feedlist.js"></script>
         <!-- endbuild -->
 </body>
 </html>

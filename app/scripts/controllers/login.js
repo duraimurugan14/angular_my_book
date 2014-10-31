@@ -13,7 +13,6 @@ angular.module('mybookApp')
   .controller('LoginCtrl', ['$scope', '$rootScope', '$location',  'AuthenticationService', 
   	function ($scope, $rootScope, $location, AuthenticationService) {	
 
-
 	$rootScope.isUserValid = false;
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
