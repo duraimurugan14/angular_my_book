@@ -100,3 +100,8 @@ button.defaultBtn {
     float: right;
     padding-right: 5px;
 }
+
+td {
+    padding: 10px;
+
+}

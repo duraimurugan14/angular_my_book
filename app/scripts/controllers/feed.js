@@ -15,6 +15,7 @@ angular.module('mybookApp')
 		return $scope.feedsText;
 	};
 
+
 $scope.defaultCurrentViewTo = function(view){
 		switch(view){
 		case "feedsView" : 
@@ -30,6 +31,36 @@ $scope.defaultCurrentViewTo = function(view){
 		}
 	};
 
-}]);
+
+	$scope.saveFeed = function(){
+		var count = 0;
+		var caption = $scope.feed.caption;
+		if(caption.length === 0){
+			feedResource.addFeed(angular.extends($scope.feed));
+		}
+		else{
+
+		}
+	}
+
+}])
+
+  .factory('feedResource', function(){
+  	feedData = [];
+  	feed = {
+            caption: 'Fred Belcher'
+        };
+  	return{
+  		feedList : function(){
+  			return feedData;
+  		},
+  		addFeed : function (feed) {
+  			feedData.push(feed);
+  		},
+  		deleteFeed : function (id) {
+  			feedData.splice(id, 1);
+  		}
+  	}
+  })
 
 

@@ -5,10 +5,31 @@
 					</div>
 					<div id="feedPage">
 						<button id = "btnSignOut" class="defaultBtn" ng-click = "logOut()">Signout</button>
-						<h4> Welcome {{$scope.userName}}!!!</h4>
-						<input type = "text" id="feedsText" ng-model = "feedsText" style="width:750px;" align = "center" placeholder = "Enter your feed here">
+						<h4> Welcome {{userName}}!!!</h4>
+						<input type = "text" id="feedsText" ng-model = "feed.caption" style="width:750px;" align = "center" placeholder = "Enter your feed here">
 						<button ng-disabled="!itemFeedValid()" class="defaultBtn" ng-click="postFeeds()">Post</button>
 						<br>
 					</div>						
-					<feed-list>  </feed-list> 
+					<!-- <feed-list>  </feed-list> -->
+
+					<table>
+				        <thead>
+				            <tr>
+				            	<td>User</td>
+				                <td>Feed</td>
+				                <td></td>
+				            </tr>
+				        </thead>
+				        <tbody>
+				            <tr ng-repeat="item in items | filter:currentFilter" ng-class-even="'even'">
+				                <td><input type="checkbox" ng-model="item.selected"></td>
+				                <td><a ng-href="/items/{{item.id}}">{{item.name}}</a></td>
+				            </tr>
+				        </tbody>
+				    </table>
+
 				</div>
+
+
+
+
