@@ -69,3 +69,127 @@
         <!-- endbuild -->
 </body>
 </html>
+
+
+
+
+
+
+
+<!--
+
+<div ng-controller="itemController">
+    <div class="search-panel"></div>
+    <h1 class="logo">Item Admin</h1>
+    <div class="command-panel">
+        <div class="commands">
+            <button class="edit" ng-click="editItems()" ng-disabled="selectedItems().length == 0">Edit</button>
+            <button class="delete" ng-click="confirmDeleteItems()" ng-disabled="selectedItems().length == 0">Delete</button>
+            <span class="selection-count">{{selectedItems().length}} </span>
+        </div>
+    </div>
+    <div class="cleared"></div>
+    <div>
+        <div class="filter-panel">
+            <button class="new" ng-click="newItem()">New</button>
+            <div class="filters">
+                <ul>
+                    <li><a ng-click="setFilter('allItems')">All</a></li>
+                    <li><a ng-click="setFilter('heavyWeightItems')">Heavy Weight</a></li>
+                    <li><a ng-click="setFilter('middleWeightItems')">Middle Weight</a></li>
+                    <li><a ng-click="setFilter('lightWeightItems')">Light Weight</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-panel" ng-view></div>
+        <div class="cleared"></div>
+    </div>
+    <div class="lightbox" ng-show="lightbox.itemForm.on">
+        <div class="mask"></div>
+        <div class="content">
+            <div class="header">
+                <h3><ng-pluralize count="selectedItems().length" when="{'0': 'New Item', '1': 'Editing 1 Item', 'other': 'Editing {} Items'}"></ng-pluralize></h3>
+                <a class="close-btn" ng-click="lightbox.close('itemForm')">Close</a>
+                <div class="cleared"></div>
+            </div>
+            <div class="form">
+                <form novalidate>
+                    <fieldset>
+                        <ol>
+                            <li>
+                                <label for="name">Name</label>
+                                <input type="text" name="name" ng-model="currentItem.name" placeholder="Enter the person's name..." />
+                            </li>
+                            <li>
+                                <label for="weight">Weight</label>
+                                <input type="text" name="weight" ng-model="currentItem.weight" placeholder="Enter the person's weight..." />
+                            </li>
+                            <li>
+                                <button ng-disabled="!itemFormValid()" ng-click="save()">Save</button>
+                                <button ng-click="lightbox.close('itemForm')">Cancel</button>
+                            </li>
+                        </ol>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="lightbox" ng-show="lightbox.alertForm.on">
+        <div class="mask"></div>
+        <div class="content">
+            <div class="header">
+                <h3>{{lightbox.alertForm.title}}</h3>
+                <a class="close-btn" ng-click="lightbox.close('alertForm')">Close</a>
+                <div class="cleared"></div>
+            </div>
+            <div class="message">{{lightbox.alertForm.confirmMessage}}</div>
+            <div class="controls">
+                <button ng-click="lightbox.alertForm.confirmMethod.call()">Confirm</button>
+                <button ng-click="lightbox.close('alertForm')">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="index.html">    
+    <table>
+        <thead>
+            <tr>
+                <td><input type="checkbox" ng-model="allSelected" ng-change="toggleAllSelected()"/></td>
+                <td>Name</td>
+                <td>Weight</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items | filter:currentFilter" ng-class-even="'even'">
+                <td><input type="checkbox" ng-model="item.selected"></td>
+                <td><a ng-href="/items/{{item.id}}">{{item.name}}</a></td>
+                <td>{{item.weight}}</td>
+                <td><a ng-click="editItems(item)">Edit</a></td>
+            </tr>
+        </tbody>
+    </table>
+</script>
+    
+<script type="text/ng-template" id="show.html">
+    <div id="item" class="show">
+        <div class="item-controls">
+            <a ng-href="/items" class="back">Back to list</a> | 
+            <a ng-href="/items/{{previousItem.id}}">{{previousItem.name}}</a> | 
+            <a ng-href="/items/{{nextItem.id}}">{{nextItem.name}}</a>
+        </div>
+        <ol>
+            <li>
+                <label>Name</label>
+                {{currentItem.name}}
+            </li>
+            <li>
+                <label>Weight</label>
+                {{currentItem.weight}}
+            </li>
+        </ol>
+    </div>
+</script>
+
+-->

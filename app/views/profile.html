@@ -1,13 +1,12 @@
+				
 				<div>
+					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOutUser()">Signout</button>
 					<div class = "nav">
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
 					</div>
 
 						<div id="profilePage">
-							<h4> Welcome {{userName}}!!!</h4>
-						</div>
-							
 							<table>
 								<tr>
 									<td><div class = "userIcon"></div></td>
@@ -17,18 +16,29 @@
 												<td><div class = "userIcon"></div></td>
 												<td>
 													<table>
-														<tr><td>*<input id = "Profilename" type="text" name="f"  placeholder="Name" align = "center"></td></tr>
-														<tr><td>*<input id = "age" type="text" name="f"  placeholder="Age" align = "center" onkeypress='validateNumber(event)'></td><tr>
-														<tr><td>*<input id = "phone" type="text" name="f"  placeholder="Phone" align = "center" onkeypress='validateNumber(event)'></td><tr>
-														<tr><td>*<input id = "email" type="text" name="f"  placeholder="Email" align = "center"></td><tr>
-														<tr><td><textarea id = "address" rows="4" placeholder="Address"></textarea></td><tr>
-														<tr><td><input id = "fileName" type="text" name="f"  placeholder="Profile Image" align = "center"></td>
-														<td><input type="file" name="p"  value="Select" id="profileImage" style="display: none;"  onchange="handleFiles();">
-														<input type="button" value="Browse..." onclick="document.getElementById('profileImage').click();" />
-														</td></tr>								
+														
+														<tr><td>*<input id = "profilename" ng-model = "profileName" class = "profileElements" type="text" name="f"  placeholder="Name" align = "center"></td></tr>
 
-														<tr></tr><tr></tr>
-														<tr><td></td><td><input type="button" name="p"  value="Save" onclick="saveProfile();"></td></tr>
+														<tr><td>*<input id = "age" ng-model = "profileAge" class = "profileElements" type="text" name="f"  placeholder="Age" align = "center"></td><tr>
+
+														<tr><td>*<input id = "phone" ng-model = "profilePhone" class = "profileElements" type="text" name="f"  placeholder="Phone" align = "center"></td><tr>
+
+														<tr><td>*<input id = "email" ng-model = "profileEmail" class = "profileElements" type="text" name="f"  placeholder="Email" align = "center"></td><tr>
+
+														<tr><td><textarea id = "address" class = "profileElements" rows="4" placeholder="Address"></textarea></td><tr>
+
+														<tr><td>
+														<input id = "fileName" type="text" name="f"  placeholder="Profile Image" align = "center">
+														<input type="button" value="Browse..."/>
+														</td></tr>
+
+
+														<tr><td>
+														<button class="defaultBtn" ng-disabled="!itemProfileValid()" ng-click = "logOut()">Save</button>
+														</td><td>
+
+														<input type="file" name="p"  value="Select" id="profileImage" style="display: none;">
+
 													</table>
 												</td>
 												<td>
@@ -40,4 +50,5 @@
 									</td>
 								</tr>
 							</table>
+						</div>
 				</div>

@@ -36,7 +36,7 @@ body {
   z-index:100;
   background:#797979;
   background-color: rgba(121, 122, 122, 0.9);
-  padding:10px 10px 0 10px;
+  padding: 0px 10px 0 10px;
   color:#fff;
   width:100%;
   left:0;
@@ -51,6 +51,8 @@ body {
   position: absolute;
   top: 2px;
   right: 20px;
+  height: 35px;
+  padding-top: 10px;
 }
 
 .userFields{
@@ -65,7 +67,7 @@ body {
 /* css for left nav bar in feed and profile page */
 .nav {
     line-height:30px;
-    height:500px;
+    height:510px;
     width:100px;
     float:left;
     padding:15px; 
@@ -82,7 +84,11 @@ body {
 #profilePage{
     width:auto;
     float:left;
-    padding:10px; 
+    
+    padding-right: 40px;
+    padding-left: 300px;
+    padding-top: 80px;
+    padding-bottom: 20px;
 }
 
 button {
@@ -96,12 +102,41 @@ button.defaultBtn {
     margin-bottom: 10px;
 }
 
+
 #btnSignOut{
-    float: right;
-    padding-right: 5px;
+  padding: 2px;
+  background-color: rgba(216, 221, 221, 0.9);
+  height: 35px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 
-td {
-    padding: 10px;
+.profileElements{
+  width: 300px;
+  float: right;
+}
 
+.padding {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-style: dotted;
+    border-width: 3px;
+}
+
+.usrimgSize{
+  width: 60px;
+}
+.usrDelImg{
+  width: 45px;
+  float: right;
+}
+
+#feedValues{
+    font-size: 35px;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-family: cursive;
 }

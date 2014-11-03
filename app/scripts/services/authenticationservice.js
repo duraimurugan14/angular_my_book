@@ -25,10 +25,6 @@
     		$cookieStore.remove('globals');
     	};
 
-    	service.signOutUser = function(){
-    		$location.path('/');
-    	};
-
     	return service;					
 }])
 

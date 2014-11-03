@@ -12,25 +12,20 @@
 angular.module('mybookApp')
   .controller('LoginCtrl', ['$scope', '$rootScope', '$location',  'AuthenticationService', 
   	function ($scope, $rootScope, $location, AuthenticationService) {	
-
+  		
 	$rootScope.isUserValid = false;
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+	AuthenticationService.ClearCredentials();
 
-    AuthenticationService.ClearCredentials();
 	$scope.loginUser = function(){
      	$scope.userCredentials = $scope.loginUsrName + " " + $scope.loginUsrPwd;
      	$scope.Login($scope.loginUsrName, $scope.loginUsrPwd);
 		if (!$rootScope.isUserValid) { 
 			$scope.loginUsrName = null;
 			$scope.loginUsrPwd = null;
+			$location.path('/');
 		}
 		else{
 			$scope.users = AuthenticationService.SetCredentials($scope.loginUsrName, $scope.loginUsrPwd);
-			alert($scope.users);
 			$location.path('/feed');
 		}
     };

@@ -33,4 +33,15 @@ angular.module('mybookApp')
 					break;
 			}
 		};
+
+		$scope.itemProfileValid = function(){
+			return $scope.profileName && $scope.profileAge && $scope.profilePhone && $scope.profileEmail;
+		};
+
+		$scope.signOutUser = function(){
+			$rootScope.isUserValid = false;
+			AuthenticationService.ClearCredentials();
+    		$location.path('/');
+    	};
+
 }]);

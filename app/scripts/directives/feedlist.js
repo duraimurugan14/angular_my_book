@@ -7,12 +7,17 @@
  * # FeedList
  */
 angular.module('mybookApp')
-  .directive('FeedList', function () {
+  .directive('feedList', function () {
     return {
-      template: '<div>This is a directive content</div>',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the FeedList directive');
-      }
-    };
+      template: '<div ng-repeat = "item in items">' +
+      				'<div class = "padding">' + 
+      					'<img class = "usrimgSize" ng-src="images/user_icon.jpeg">' + 
+       					'<label id = "feedValues"> {{item.caption}} </label>' +
+       					'<label> {{date | date:"MM-dd-yyyy"}} </label>' +
+       					'<img class = "usrDelImg" src="images/remove_icon.jpeg" ng-click= "deleteFeed(i)">' +
+       				'</div>' +
+       			'</div>' + '<br>'
+      };
   });
+

@@ -1,0 +1,18 @@
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name mybookApp.directive:FeedList
+ * @description
+ * # FeedList
+ */
+angular.module('mybookApp')
+  .directive('feedList', function () {
+    return {
+      restrict: 'E',
+      template: '<div class = "padding" ng-repeat = "feed in feeds">' +
+      			'<img ng-src="images/yeoman.png">' + 
+       			'<label> {{feedsText}} </label>' +
+       			'<label> timestamp </label>'
+      };
+  });

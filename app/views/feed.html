@@ -1,35 +1,40 @@
 				<div>
+					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOutUser()">Signout</button>
 					<div class = "nav">
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
 					</div>
+
 					<div id="feedPage">
-						<button id = "btnSignOut" class="defaultBtn" ng-click = "logOut()">Signout</button>
 						<h4> Welcome {{userName}}!!!</h4>
-						<input type = "text" id="feedsText" ng-model = "feed.caption" style="width:750px;" align = "center" placeholder = "Enter your feed here">
-						<button ng-disabled="!itemFeedValid()" class="defaultBtn" ng-click="postFeeds()">Post</button>
+						<input type = "text" id="feedsText" name="commentForm" ng-model = "currentItem.caption" style="width:750px;" align = "center" placeholder = "Enter your feed here">
+						<button ng-disabled="!itemFeedValid()" class="defaultBtn" ng-click="save()">Post</button>
 						<br>
+						<feed-list></feed-list>
+
+						<!-- <div ng-repeat = "item in items">
+							<div class = "padding">
+      						<img ng-src="images/user_icon.jpeg">
+      						<label> {{item.caption}} </label>
+       						<label> {{date | date:"MM-dd-yyyy"}} </label>
+       						<img src="images/remove_icon.jpeg" ng-click= "deleteFeed(i)">
+       						</div>
+       					</div>	-->
+
+
+
 					</div>						
-					<!-- <feed-list>  </feed-list> -->
-
-					<table>
-				        <thead>
-				            <tr>
-				            	<td>User</td>
-				                <td>Feed</td>
-				                <td></td>
-				            </tr>
-				        </thead>
-				        <tbody>
-				            <tr ng-repeat="item in items | filter:currentFilter" ng-class-even="'even'">
-				                <td><input type="checkbox" ng-model="item.selected"></td>
-				                <td><a ng-href="/items/{{item.id}}">{{item.name}}</a></td>
-				            </tr>
-				        </tbody>
-				    </table>
-
 				</div>
+					
 
-
-
-
+			<!--
+			<li> + 
+				<div class =\"padding\" id=\"textFeedItem\"> + 
+				<img src=\"assets\/user_icon.jpeg\" id=\"userImage\" align=\"center\"> + 
+				<label feedValues\"> {{currentFeed.content}} </label> + 
+				<label ng-click=openFeedInBrowser(i)> {{currentFeed.content}} </label> + 
+				<img src="assets\/remove_icon.jpeg\" ng-click= deleteFeed(i)\"> + 	
+				<label> {{currentFeed._timeStamp}} </label> + 
+				</div> +
+			</li> -->
+	
