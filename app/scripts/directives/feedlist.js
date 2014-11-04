@@ -10,14 +10,14 @@ angular.module('mybookApp')
   .directive('feedList', function () {
     return {
       restrict: 'E',
-      template: '<div ng-repeat = "item in items">' +
-      				'<div class = "padding">' + 
+      template: '<div ng-repeat = "item in items"> <br>' + 
+      				'<div ng-class-odd="odd" ng-class-even="even" class = "padding">' + 
       					'<img class = "usrimgSize" ng-src="images/user_icon.jpeg">' + 
        					'<label id = "feedValues"> {{item.caption}} </label>' +
-       					'<label> {{date | date:"MM-dd-yyyy"}} </label>' +
-       					'<img class = "usrDelImg" src="images/remove_icon.jpeg" ng-click= "deleteFeed(i)">' +
+       					'<label> {{date | date:"MM-dd-yyyy HH:mm:ss"}} </label>' +
+       					'<img class = "usrDelImg" src="images/remove_icon.jpeg" ng-click= "deleteItems(item.id)">' +
        				'</div>' +
-       			'</div>' + '<br>'
+       			'</div>' 
       };
   });
 

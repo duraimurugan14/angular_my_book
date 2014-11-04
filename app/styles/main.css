@@ -23,7 +23,7 @@ body {
   width: 100%;
 }
 /* Make the masthead heading the same height as the navigation */
-.header h3 {
+.header h2 {
   
   line-height: 5px;
   padding-bottom: 5px;
@@ -139,4 +139,18 @@ button.defaultBtn {
     padding-left: 20px;
     padding-right: 30px;
     font-family: cursive;
+}
+
+.imgDimensions{
+  float: center;
+  width: 987px;
+  height: 540px;
+  padding-left: 180px;
+}
+
+.odd {
+  color: red;
+}
+.even {
+  color: blue;
 }

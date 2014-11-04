@@ -13,26 +13,37 @@ angular.module('mybookApp')
   		function ($scope, $rootScope, $location, AuthenticationService, feedResource) {
 
   	$scope.userName = $rootScope.globals.currentUser.username;
+    $scope.date = new Date();
 
-  	$scope.feed = {
-        feed : "",
-        email : "",
-        comment: ""
-    };
+var userDetails = { name:undefined, age:undefined, phoneno:undefined, email:undefined, address:undefined, imagefile:undefined};
+function User(name, age, phoneno, email, address, imagefile) {
+    this.name = name;
+    this.age = age;
+    this.phoneno = phoneno;
+    this.email = email;
+    this.address = address;
+    this.imagefile = imagefile;
+}
 
-//http://blog.hugeaim.com/2013/04/07/clearing-a-form-with-angularjs/
+    var feedData = {id: undefined, caption : undefined, type : undefined};
+    function feed(id, caption, type){
+        this.id = id;
+        this.caption = caption;
+        this.type = type;
+    }
 
-  	$scope.feeds = [];
-  	// $scope.feed = {};
-  	$scope.date = new Date();
+  	
 	$scope.itemFeedValid = function () {
 		return $scope.currentItem.caption;
 	};
 
 	$scope.signOutUser = function(){
 		$rootScope.isUserValid = false;
-		AuthenticationService.ClearCredentials();
     	$location.path('/');
+    };
+
+    $scope.openFeedUrl = function(){
+        window.open($scope.item.caption);
     };
 
 
@@ -48,34 +59,47 @@ angular.module('mybookApp')
     };
 
 
-    // $scope.selectedItems = function () {
-    // 	var id = 0;
-    //     return _.where($scope.items, {
-    //          id: id++
-    //      });
-    // }
 
-   
-    $scope.save = function () {
-        // var items = $scope.selectedItems(),
-        var caption = $scope.currentItem.caption;
-        if (caption) {
-            feedResource.add(angular.extend($scope.currentItem, {}));
-        } else {
-            // _.each(items, function (item) {
-                if (caption) {
-                    item.caption = caption;
-                }
-            // });
+    $scope.getFeedType = function(){
+        if(!$scope.currentItem.caption){
+            alert("Error validating feed type");
         }
+        else{
+            var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+            if(!pattern.test($scope.currentItem.caption)) {
+                $scope.currentItem.feedType = 'text';
+            } else {
+                $scope.currentItem.feedType = 'url';
+            }
+        }
+    };
+  
+    $scope.save = function () {
+        var caption = $scope.currentItem.caption;
+        if (!caption) {
+            alert("Error posting user feed data");
+        } 
+        else {
+            $scope.getFeedType();
+            alert($scope.currentItem.length);
+            if ($scope.currentItem) {
+                $scope.currentItem.id = $scope.currentItem.length++;
+            }
+            else
+                $scope.currentItem.id = 1;
+            feedResource.add(angular.extend($scope.currentItem, {}));
+        }
+        $scope.currentItem= {};
     };
         
     $scope.deleteItems = function (id) {
             feedResource.remove(id);
     };
-
-
-
 
 	$scope.defaultCurrentViewTo = function(view){
 		switch(view){
@@ -93,25 +117,17 @@ angular.module('mybookApp')
 	};
 }])
 	.factory('feedResource', function () {
-	    var current_id = null, data = [
-	        {
-	            caption : "item 1"
-	        },
-	        {
-	            caption : "item 2"
-	        }
-	    ];
+	    var data = [];
 	    
 	    return {
-	        list: function () {
-	            return data;
-	        },
+            list: function () {
+                return data;
+            },
 	        add: function (item) {
 	            data.push(item);
 	        },
 	        remove: function (item) {
-	            data.splice(data.indexOf(item), 1);
+	            data.splice(item, 1);
 	        }
 	    };
 	});
-

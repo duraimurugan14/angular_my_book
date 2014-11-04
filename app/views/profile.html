@@ -1,13 +1,12 @@
-				
-				<div>
+<div ng-init = "getProfileInformation()">
 					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOutUser()">Signout</button>
 					<div class = "nav">
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
 						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
 					</div>
 
-						<div id="profilePage">
-							<table>
+						<div id="profilePage">					
+							<table> 
 								<tr>
 									<td><div class = "userIcon"></div></td>
 									<td>
@@ -17,32 +16,36 @@
 												<td>
 													<table>
 														
-														<tr><td>*<input id = "profilename" ng-model = "profileName" class = "profileElements" type="text" name="f"  placeholder="Name" align = "center"></td></tr>
+														<tr><td>*<input id = "profilename" ng-model = "profileUsrName" class = "profileElements" type="text" name="f"  placeholder="Name" align = "center"></td></tr>
 
-														<tr><td>*<input id = "age" ng-model = "profileAge" class = "profileElements" type="text" name="f"  placeholder="Age" align = "center"></td><tr>
+														<tr><td>*<input id = "age" ng-model = "profileUsrAge" class = "profileElements" type="text" name="f"  placeholder="Age" align = "center"></td><tr>
 
-														<tr><td>*<input id = "phone" ng-model = "profilePhone" class = "profileElements" type="text" name="f"  placeholder="Phone" align = "center"></td><tr>
+														<tr><td>*<input id = "phone" ng-model = "profileUsrPhone" ng-pattern="onlyNumbers" class = "profileElements" type="text" name="f"  placeholder="Phone" align = "center" ></td><tr>
 
-														<tr><td>*<input id = "email" ng-model = "profileEmail" class = "profileElements" type="text" name="f"  placeholder="Email" align = "center"></td><tr>
+														<tr><td>*<input id = "email" ng-model = "profileUsrEmail" class = "profileElements" type="text" name="f"  placeholder="Email" align = "center"></td><tr>
 
-														<tr><td><textarea id = "address" class = "profileElements" rows="4" placeholder="Address"></textarea></td><tr>
+														<tr><td><textarea id = "address" ng-model = "profileUsrAddress" rows="4" placeholder="Address"></textarea></td><tr>
 
 														<tr><td>
-														<input id = "fileName" type="text" name="f"  placeholder="Profile Image" align = "center">
+														<input type="text" name="f"  ng-model = "profileUsrImg" placeholder="Profile Image" align = "center">
 														<input type="button" value="Browse..."/>
+</td></tr>
+<tr><td>
+														<input type="file" filelist-bind name="files"/>
+														<br>
+														files : <pre> {{ files[0].name | json }} </pre>
+													
 														</td></tr>
 
 
 														<tr><td>
-														<button class="defaultBtn" ng-disabled="!itemProfileValid()" ng-click = "logOut()">Save</button>
+														<button class="defaultBtn" ng-disabled="!itemProfileValid()" ng-click = "saveProfileInformation()">Save</button>
 														</td><td>
-
-														<input type="file" name="p"  value="Select" id="profileImage" style="display: none;">
 
 													</table>
 												</td>
 												<td>
-													<img id="preview" src="" width="152px" height="229px"></img>
+													<img ng-src= "{{src}}" ng-load = "onLoad()" width="152px" height="229px"></img>
 												</td>
 												<td> <td><div class = "userIcon"></div></td></td>
 											</tr>
