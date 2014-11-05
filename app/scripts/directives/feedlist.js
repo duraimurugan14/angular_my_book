@@ -19,5 +19,26 @@ angular.module('mybookApp')
        				'</div>' +
        			'</div>' 
       };
-  });
+  })
+  .directive('filelistBind', function() {
+  return function( scope, elm, attrs ) {
+    elm.bind('change', function( evt ) {
+      scope.$apply(function() {
+        scope[ attrs.name ] = evt.target.files;
+      });
+    });
+  };
+  })
+  .directive('ngLoad', [function() {
+    return {
+        restrict: 'A',
+        scope: {
+            loadHandler: '&ngLoad'
+        },
+        link: function (scope, element, attr) {
+            element.on('load', scope.loadHandler);
+        }
+    };
+  }]);
+
 

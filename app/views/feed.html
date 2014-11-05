@@ -1,15 +1,15 @@
 				<div>
-					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOutUser()">Signout</button>
+					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOut()">Signout</button>
 					<div class = "nav">
-						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
-						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
+						<button class="defaultBtn" ng-click = "changeView('feedsView')">Feed</button>
+						<button class="defaultBtn" ng-click = "changeView('profileView')">Profile</button>
 					</div>
 
 					<div id="feedPage">
 						<h4> Welcome {{userName}}!!!</h4>
 						<form name="form">
 							<input type = "text" ng-model = "currentItem.caption" style="width:750px;" align = "center" placeholder = "Enter your feed here">
-							<button ng-disabled="!itemFeedValid()" class="defaultBtn" ng-click="save()">Post</button>
+							<button ng-disabled="!feedDataPresent()" class="defaultBtn" ng-click="save()">Post</button>
 						</form>
 						<br>
 						<feed-list></feed-list>

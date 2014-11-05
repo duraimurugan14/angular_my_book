@@ -9,39 +9,18 @@
  */
 
 angular.module('mybookApp')
-  .controller('FeedCtrl', ['$scope', '$rootScope', '$location', 'AuthenticationService', 'feedResource', 
-  		function ($scope, $rootScope, $location, AuthenticationService, feedResource) {
+  .controller('FeedCtrl', ['$scope', '$rootScope', '$location', 'AuthenticationService', 'feedResource','utilsservice', 
+  		function ($scope, $rootScope, $location, AuthenticationService, feedResource, utilsservice) {
 
-  	$scope.userName = $rootScope.globals.currentUser.username;
-    $scope.date = new Date();
-
-var userDetails = { name:undefined, age:undefined, phoneno:undefined, email:undefined, address:undefined, imagefile:undefined};
-function User(name, age, phoneno, email, address, imagefile) {
-    this.name = name;
-    this.age = age;
-    this.phoneno = phoneno;
-    this.email = email;
-    this.address = address;
-    this.imagefile = imagefile;
-}
-
-    var feedData = {id: undefined, caption : undefined, type : undefined};
-    function feed(id, caption, type){
-        this.id = id;
-        this.caption = caption;
-        this.type = type;
-    }
-
+  	$scope.userName = $rootScope.globals.currentUser.username;      
+    $scope.date = new Date();                                       // To get the date in the feed list view
   	
-	$scope.itemFeedValid = function () {
+    /* Enables the Post button in feeds page on user entry */
+	$scope.feedDataPresent = function () {                           
 		return $scope.currentItem.caption;
 	};
 
-	$scope.signOutUser = function(){
-		$rootScope.isUserValid = false;
-    	$location.path('/');
-    };
-
+    /* Opens the URL of the feed when the user clicks */
     $scope.openFeedUrl = function(){
         window.open($scope.item.caption);
     };
@@ -50,16 +29,7 @@ function User(name, age, phoneno, email, address, imagefile) {
     $scope.currentItem = {};
     $scope.items = feedResource.list();    
     
-    $scope.setCurrentItem = function (item) {
-        $scope.currentItem = item;
-    };
-
-    $scope.newItem = function () {
-        $scope.setCurrentItem({caption: null});
-    };
-
-
-
+    /* Finds the feed type and assigns to currentItem.feedType variable*/
     $scope.getFeedType = function(){
         if(!$scope.currentItem.caption){
             alert("Error validating feed type");
@@ -78,50 +48,32 @@ function User(name, age, phoneno, email, address, imagefile) {
             }
         }
     };
-  
+
+
     $scope.save = function () {
         var caption = $scope.currentItem.caption;
         if (!caption) {
             alert("Error posting user feed data");
         } 
         else {
-            $scope.getFeedType();
-            feedResource.add(angular.extend($scope.currentItem, {}));
+            $scope.getFeedType();                                        // gets the feed type
+            feedResource.add(angular.extend($scope.currentItem, {}));    // calls the add function in feedResource service
         }
-        $scope.currentItem= {};
+        $scope.currentItem= {};                                          // Re-initializes the object to {}
     };
         
     $scope.deleteItems = function (id) {
-            feedResource.remove(id);
+        feedResource.remove(id);                                         // Deletes the feed object based on the id through feedResource service
     };
 
-	$scope.defaultCurrentViewTo = function(view){
-		switch(view){
-		case "feedsView" : 
-			$location.path('/feed');
-			break;
-		case "profileView" : 
-			$location.path('/profile');
-			break;
-		case "loginView" :
-		default:
-			$location.path('/');
-			break;
-		}
-	};
-}])
-	.factory('feedResource', function () {
-	    var data = [];	    
-	    return {
-            list: function () {
-                return data;
-            },
-	        add: function (item) {
-                item.id = data.length;
-	            data.push(item);
-	        },
-	        remove: function (id) {
-	            data.splice(data.indexOf(data[id]), 1);
-	        }
-	    };
-	});
+
+    $scope.signOut = function(){
+        utilsservice.signOutUser();        
+    };
+
+    $scope.changeView = function(view){
+        utilsservice.defaultCurrentViewTo(view);
+    };
+
+}]);
+	

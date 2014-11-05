@@ -1,8 +1,8 @@
 <div ng-init = "getProfileInformation()">
-					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOutUser()">Signout</button>
+					<button id = "btnSignOut" class="defaultBtn" ng-click = "signOut()">Signout</button>
 					<div class = "nav">
-						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('feedsView')">Feed</button>
-						<button class="defaultBtn" ng-click = "defaultCurrentViewTo('profileView')">Profile</button>
+						<button class="defaultBtn" ng-click = "changeView('feedsView')">Feed</button>
+						<button class="defaultBtn" ng-click = "changeView('profileView')">Profile</button>
 					</div>
 
 						<div id="profilePage">					
@@ -45,7 +45,7 @@
 													</table>
 												</td>
 												<td>
-													<img ng-src= "{{src}}" ng-load = "onLoad()" width="152px" height="229px"></img>
+													<img ng-src= "{{src}}" ng-load = "onLoad()" width="110px" height="150px"></img>
 												</td>
 												<td> <td><div class = "userIcon"></div></td></td>
 											</tr>

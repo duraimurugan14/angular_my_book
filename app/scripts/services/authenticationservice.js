@@ -22,6 +22,7 @@
 
     	service.ClearCredentials = function(){
     		delete $rootScope.globals;
+    		$rootScope.isUserValid = false;
     		$cookieStore.remove('globals');
     	};
 

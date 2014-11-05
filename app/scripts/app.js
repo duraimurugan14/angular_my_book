@@ -23,10 +23,6 @@ angular
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -53,10 +49,7 @@ if the user is logged in before each route change.*/
     function ($rootScope, $location, $cookieStore, $http) {
         // keep user logged in after page refresh
         $rootScope.globals = $cookieStore.get('globals') || {};
-        // if ($rootScope.globals.currentUser) {
-        //     $http.defaults.headers.common['Authorization'] = 'Basic ' + $rootScope.globals.currentUser.authdata; // jshint ignore:line
-        // }
- 
+        
         $rootScope.$on('$routeChangeStart', function (event, next, current) {
             // redirect to login page if not logged in
             var area = $location.url().split('/')[1];
