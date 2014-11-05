@@ -111,13 +111,17 @@ function User(name, age, phoneno, email, address, imagefile) {
 	};
 }])
 	.factory('feedResource', function () {
-	    var data = [];	    
+	    var data = [];
+	    
 	    return {
             list: function () {
                 return data;
             },
 	        add: function (item) {
+                alert(data.length);
                 item.id = data.length;
+                alert(item);
+
 	            data.push(item);
 	        },
 	        remove: function (id) {
