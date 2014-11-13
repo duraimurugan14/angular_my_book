@@ -9,7 +9,7 @@
  */
 
   angular.module('mybookApp')
-  	.service('AuthenticationService',['Base64', '$rootScope','$cookieStore', '$location', function(Base64, $rootScope, $cookieStore, $location) {
+  	.factory('AuthenticationService',['Base64', '$rootScope','$cookieStore', '$location', function(Base64, $rootScope, $cookieStore, $location) {
   		var service = {};
 		service.SetCredentials = function(username, password){
 			var authdata = Base64.encode(username + ':' + password);
@@ -29,7 +29,7 @@
     	return service;					
 }])
 
-  	.service('Base64', function () {
+  	.factory('Base64', function () {
     /* jshint ignore:start */
  		var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
  

@@ -8,7 +8,7 @@
  * Service in the mybookApp.
  */
 angular.module('mybookApp')
-  .service('utilsservice', ['$location', '$rootScope', function utilsservice($location, $rootScope) {
+  .factory('utilsservice', ['$location', '$rootScope', function utilsservice($location, $rootScope) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     return {
     	signOutUser : function(){

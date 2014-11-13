@@ -8,7 +8,7 @@
  * Service in the mybookApp.
  */
 angular.module('mybookApp')
-  .service('feedResource', function feedResource() {
+  .factory('feedResource', function feedResource() {
     // AngularJS will instantiate a singleton by calling "new" on this function
        	var data = [];	    
 	    return {
