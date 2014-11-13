@@ -1,0 +1,125 @@
+<!-- My Book - Durai -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> My Book </title>
+		<!-- Load the required script Files -->
+		<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+		<script type="text/javascript" src="js/feeds.js"></script>
+		<script type="text/javascript" src="js/profile.js"></script>
+		<script type="text/javascript" src="js/login.js">  </script>
+	</head>
+	<body>
+		<!-- view for login page -->
+		<div id = "loginView">
+			<div class="header">
+				<div class = "left">
+					<h3>My Book</h3>
+				</div>
+
+				<div>
+					<div name="loginForm">
+							<input type="text" id = "username" placeholder = "User name">
+							<input type="password" id = "password" placeholder = "password">
+							<input type="button" name="signIn"  value="Sign In" onclick="loginUser(document.getElementById('username'),document.getElementById('password'))">	
+					</div>	
+				</div>
+			</div>
+			<div> <img id="img" src="assets/view.jpeg" width="987px" height="618px"> </div>
+			<div class = "footer">
+				Talent Improving exercise, OFS
+			</div>	
+		</div>
+
+		<!-- view for feeds page -->
+		<div id ="feedsView">
+				<div class = "header">
+					<div>
+						<h2>MY BOOK</h2>
+					</div>
+					<div>
+							Welcome <a id = "feeduserName"></a> !
+						<div class = "btnSignOut">
+							<input type="button" name="signOut"  value="Sign Out" onClick="logOutUser()">	
+						</div>
+					</div>						
+				</div>
+
+				<div>
+					<div class = "nav">
+						<input type="button" name="feed" id = "btnFeed" value="Feed  " onclick="defaultCurrentViewTo('feedsView')">
+						<input type="button" name="profile" id = "btnProfile"  value="Profile" onclick="defaultCurrentViewTo('profileView')">
+					</div>
+					<div id="feed">
+						<input type = "text" id="feedsText" style="width:750px;" align = "center" placeholder = "Enter your feed here">
+						<input type = "button" id = "btnPost" value="Post" onClick="createFeeds(document.getElementById('feedsText'))"><br>
+						<ul id="feedList" style="list-style-type:none"></ul> 
+					</div>						
+				</div>		
+
+			<div class = "footer">
+				Talent Improving exercise, OFS
+			</div>	
+		</div>
+
+		<!-- view for profile page -->
+		<div id ="profileView">	
+				<div class = "header">
+					<div>
+						<h2>MY BOOK</h2>
+					</div>
+					<div>
+								Welcome <a id = "profileuserName"></a> !
+							<div class = "btnSignOut">
+								<input type="button" name="signOut"  value="Sign Out" onClick="logOutUser()">	
+							</div>			
+					</div>						
+				</div>
+
+				<div>
+					<div class = "nav">
+						<input type="button" name="feed"  value="Feed  " onclick="defaultCurrentViewTo('feedsView')">
+						<input type="button" name="profile"  value="Profile" onclick="defaultCurrentViewTo('profileView')">
+					</div>
+					<div class="profileArea">
+						<table>
+							<tr>
+								
+								<td>
+									<table>
+										<tr><td>*<input id = "profileName" type="text" placeholder="Name" align = "center"></td></tr>
+										<tr><td>*<input id = "userAge" type="text" placeholder="Age" align = "center" ></td><tr>
+										<tr><td>*<input id = "userPhone" type="text" placeholder="Phone" align = "center" ></td><tr>
+										<tr><td>*<input id = "userMail" type="text" placeholder="Email" align = "center"></td><tr>
+										<tr><td><textarea id = "userAddress" rows="4" placeholder="Address"></textarea></td><tr>
+										<tr><td><input id = "userImg" type="text" placeholder="Profile Image" align = "center"></td>
+										<td><input type="hidden" id="image-value" name="selected_image" value="" /></br></br>
+										<input type="file" id="imagefile" accept="image/*" onchange="showProfileImage(this)" name="file"></br>
+										</td>
+										<br>
+										<tr></tr><tr></tr>
+										<tr><td></td><td><input type="button" value="Save" onclick="saveProfileInformation();"></td></tr>
+									</table>
+								</td>
+								<td>
+									<img id="preview" src="" width="152px" height="229px"></img>
+								</td>
+								
+							</tr>
+						</table>
+						
+						<div id="loadFeeds" class = "feedlist">												
+						</div>
+					</div>		
+					<div class = "footer">
+						Talent Improving exercise, OFS
+					</div>
+				</div>	
+		</div>
+
+		<script>
+			defaultCurrentViewTo("loginView");
+		</script>
+</body>
+
+</html>
